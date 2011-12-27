@@ -1,0 +1,2469 @@
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (190.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (157.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111227193610)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111227193610')[0m
+Migrating to CreateBooks (20111227193756)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111227193756')[0m
+Migrating to CreateUserBooks (20111227194002)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "user_books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "book_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111227194002')[0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("books")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("user_books")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/users" for 127.0.0.1 at 2011-12-27 21:03:58 +0100
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered users/index.html.erb within layouts/application (3.7ms)
+Compiled application.css  (1ms)  (pid 2675)
+Compiled books.css  (2ms)  (pid 2675)
+Compiled scaffolds.css  (9ms)  (pid 2675)
+Compiled user_books.css  (1ms)  (pid 2675)
+Compiled users.css  (1ms)  (pid 2675)
+Compiled application.js  (3ms)  (pid 2675)
+Compiled jquery.js  (2ms)  (pid 2675)
+Compiled jquery_ujs.js  (0ms)  (pid 2675)
+Compiled books.js  (160ms)  (pid 2675)
+Compiled user_books.js  (130ms)  (pid 2675)
+Compiled users.js  (130ms)  (pid 2675)
+Completed 200 OK in 605ms (Views: 603.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /users.css - 200 OK (4ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /user_books.css - 200 OK (1ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /books.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /books.js - 200 OK (1ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /user_books.js - 200 OK (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /users.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:04:00 +0100
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:04:45 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (67.9ms)
+Rendered users/new.html.erb within layouts/application (72.2ms)
+Completed 500 Internal Server Error in 78ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x000000038ce288>:0x00000003888d50>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (28.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:04:51 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (34.0ms)
+Rendered users/new.html.erb within layouts/application (34.6ms)
+Completed 500 Internal Server Error in 40ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00000003f77620>:0x00000003d55c48>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:05:33 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (59.5ms)
+Rendered users/new.html.erb within layouts/application (60.2ms)
+Completed 500 Internal Server Error in 65ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x0000000401e830>:0x00000003fec088>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:05:33 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (63.2ms)
+Rendered users/new.html.erb within layouts/application (63.8ms)
+Completed 500 Internal Server Error in 69ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00000003fde820>:0x000000041a0488>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:05:34 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (59.3ms)
+Rendered users/new.html.erb within layouts/application (59.9ms)
+Completed 500 Internal Server Error in 65ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00000003fd97a8>:0x00000003fde4b0>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered users/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:05:59 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:06:01 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (65.7ms)
+Rendered users/new.html.erb within layouts/application (91.2ms)
+Completed 500 Internal Server Error in 96ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x0000000404ea80>:0x00000004055510>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:06:15 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (63.4ms)
+Rendered users/new.html.erb within layouts/application (64.2ms)
+Completed 500 Internal Server Error in 70ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00000003b01b90>:0x00000003713ba0>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:06:16 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (60.6ms)
+Rendered users/new.html.erb within layouts/application (61.2ms)
+Completed 500 Internal Server Error in 66ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00000003d57f48>:0x0000000369fed0>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:06:16 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (60.0ms)
+Rendered users/new.html.erb within layouts/application (60.6ms)
+Completed 500 Internal Server Error in 65ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x0000000439ced0>:0x00000003d562d8>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:06:16 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (59.9ms)
+Rendered users/new.html.erb within layouts/application (60.5ms)
+Completed 500 Internal Server Error in 65ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x0000000439d600>:0x00000003d56918>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:07:34 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (63.1ms)
+Rendered users/new.html.erb within layouts/application (63.8ms)
+Completed 500 Internal Server Error in 70ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x000000036a22e8>:0x00000002fc5678>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:07:35 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (61.4ms)
+Rendered users/new.html.erb within layouts/application (62.0ms)
+Completed 500 Internal Server Error in 67ms
+
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x0000000439dc18>:0x00000003d56a58>):
+    1: <%= simple_form_for(@user) do |f| %>
+    2:   <% if @user.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___1542154646070726414_32171120'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__285445283357468814_29638000'
+  app/controllers/users_controller.rb:29:in `new'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:08:08 +0100
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (106.5ms)
+Rendered users/new.html.erb within layouts/application (135.5ms)
+Completed 200 OK in 189ms (Views: 187.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /books.css - 200 OK (3ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /user_books.css - 200 OK (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /users.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /jquery.js - 200 OK (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /jquery_ujs.js - 200 OK (4ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /books.js - 200 OK (1ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /user_books.js - 200 OK (31ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /users.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:08:09 +0100
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:12:44 +0100
+
+ActionController::RoutingError (undefined local variable or method `trought' for #<Class:0x00000003dbba48>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:12:48 +0100
+
+ActionController::RoutingError (undefined local variable or method `trought' for #<Class:0x00000004075c98>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:13:19 +0100
+
+ActionController::RoutingError (undefined local variable or method `through' for #<Class:0x00000004630a20>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:13:36 +0100
+
+ActionController::RoutingError (undefined local variable or method `through' for #<Class:0x000000041d2528>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:13:57 +0100
+
+ActionController::RoutingError (undefined local variable or method `through' for #<Class:0x00000004289188>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:14:16 +0100
+
+ActionController::RoutingError (undefined local variable or method `through' for #<Class:0x00000003e8fa28>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (25.7ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2011-12-27 21:14:19 +0100
+
+ActionController::RoutingError (undefined local variable or method `through' for #<Class:0x00000003b687c8>):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:1:in `<top (required)>'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered users/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /user_books.css - 200 OK (1ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /books.css - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /users.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /jquery.js - 200 OK (33ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /books.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /user_books.js - 200 OK (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /users.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:38 +0100
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-12-27 21:14:41 +0100
+  Processing by UsersController#new as HTML
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" 
+Rendered users/_form.html.erb (203.0ms)
+Rendered users/new.html.erb within layouts/application (207.6ms)
+Completed 200 OK in 215ms (Views: 214.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:42 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "user"=>{"name"=>"mercy"}, "commit"=>"Create User"}
+  [1m[36mSQL (16.7ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 27 Dec 2011 20:14:45 UTC +00:00], ["name", "mercy"], ["updated_at", Tue, 27 Dec 2011 20:14:45 UTC +00:00]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 263ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:45 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" 
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "user_books" ON "books"."id" = "user_books"."book_id" WHERE "user_books"."user_id" = 1[0m
+Rendered users/_form.html.erb (103.5ms)
+Rendered users/edit.html.erb within layouts/application (105.5ms)
+Completed 200 OK in 115ms (Views: 111.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:50 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started PUT "/users/1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "user"=>{"name"=>"mercy"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 40ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:54 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" [0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" INNER JOIN "user_books" ON "books"."id" = "user_books"."book_id" WHERE "user_books"."user_id" = 1
+Rendered users/_form.html.erb (60.8ms)
+Rendered users/edit.html.erb within layouts/application (62.2ms)
+Completed 200 OK in 71ms (Views: 68.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:56 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 45ms (Views: 43.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:14:58 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" [0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" INNER JOIN "user_books" ON "books"."id" = "user_books"."book_id" WHERE "user_books"."user_id" = 1
+Rendered users/_form.html.erb (59.8ms)
+Rendered users/edit.html.erb within layouts/application (61.3ms)
+Completed 200 OK in 70ms (Views: 67.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:00 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1/edit/books" for 127.0.0.1 at 2011-12-27 21:15:08 +0100
+
+ActionController::RoutingError (No route matches [GET] "/users/1/edit/books"):
+  
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" [0m
+Rendered books/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:20 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+  Processing by BooksController#new as HTML
+Rendered books/_form.html.erb (9.4ms)
+Rendered books/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:23 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2011-12-27 21:15:30 +0100
+  Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "book"=>{"title"=>"Las cronicas de narnia"}, "commit"=>"Create Book"}
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("created_at", "title", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 27 Dec 2011 20:15:30 UTC +00:00], ["title", "Las cronicas de narnia"], ["updated_at", Tue, 27 Dec 2011 20:15:30 UTC +00:00]]
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 282ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:15:31 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered users/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:47 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT "books".* FROM "books" 
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "user_books" ON "books"."id" = "user_books"."book_id" WHERE "user_books"."user_id" = 1[0m
+Rendered users/_form.html.erb (32.6ms)
+Rendered users/edit.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 43ms (Views: 40.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:49 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started PUT "/users/1" for 127.0.0.1 at 2011-12-27 21:16:51 +0100
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "user"=>{"name"=>"mercy", "book_ids"=>["", "1"]}, "commit"=>"Update User", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" INNER JOIN "user_books" ON "books"."id" = "user_books"."book_id" WHERE "user_books"."user_id" = 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "user_books" ("book_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["book_id", 1], ["created_at", Tue, 27 Dec 2011 20:16:52 UTC +00:00], ["updated_at", Tue, 27 Dec 2011 20:16:52 UTC +00:00], ["user_id", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 286ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 16ms (Views: 13.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:52 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Rendered users/index.html.erb within layouts/application (38.1ms)
+Completed 200 OK in 48ms (Views: 46.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:16:54 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111227193610)
+Migrating to CreateBooks (20111227193756)
+Migrating to CreateUserBooks (20111227194002)
+Migrating to AddDescripcionToBooks (20111227201829)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "books" ADD "description" text[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111227201829')
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("books")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("user_books")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/users" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" 
+Rendered users/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:36 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" [0m
+Rendered books/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:40 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:44 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" [0m
+Rendered books/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:46 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/_form.html.erb (45.3ms)
+Rendered books/edit.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /users.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:19:47 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111227193610)
+Migrating to CreateBooks (20111227193756)
+Migrating to CreateUserBooks (20111227194002)
+Migrating to AddDescripcionToBooks (20111227201829)
+Migrating to CreateAuthors (20111227202019)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111227202019')
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("authors")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("books")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("user_books")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/_form.html.erb (15.2ms)
+Rendered books/edit.html.erb within layouts/application (16.6ms)
+Compiled application.css  (2ms)  (pid 2757)
+Compiled authors.css  (1ms)  (pid 2757)
+Compiled application.js  (3ms)  (pid 2757)
+Compiled authors.js  (134ms)  (pid 2757)
+Completed 200 OK in 227ms (Views: 224.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /authors.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /authors.js - 200 OK (1ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:21:51 +0100
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+  Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors" 
+Rendered authors/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:00 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/authors/new" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+  Processing by AuthorsController#new as HTML
+Rendered authors/_form.html.erb (41.6ms)
+Rendered authors/new.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 52ms (Views: 50.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:01 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started POST "/authors" for 127.0.0.1 at 2011-12-27 21:22:07 +0100
+  Processing by AuthorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "author"=>{"name"=>"Pepito"}, "commit"=>"Create Author"}
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authors" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 27 Dec 2011 20:22:07 UTC +00:00], ["name", "Pepito"], ["updated_at", Tue, 27 Dec 2011 20:22:07 UTC +00:00]]
+Redirected to http://localhost:3000/authors/1
+Completed 302 Found in 296ms
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+  Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered authors/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:08 +0100
+Served asset /application.js - 304 Not Modified (37ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" [0m
+Rendered books/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:11 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/_form.html.erb (49.5ms)
+Rendered books/edit.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 60ms (Views: 58.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:22:14 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:22:23 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/_form.html.erb (55.7ms)
+Rendered books/edit.html.erb within layouts/application (56.2ms)
+Completed 500 Internal Server Error in 62ms
+
+ActionView::Template::Error (undefined method `author_id' for #<Book:0x00000004bb4500>):
+    20:    
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.input :author_id %><br />
+    24:    
+    25:   </div>
+    26:   <div class="actions">
+  app/views/books/_form.html.erb:23:in `block in _app_views_books__form_html_erb___1638275562913921203_37451080'
+  app/views/books/_form.html.erb:1:in `_app_views_books__form_html_erb___1638275562913921203_37451080'
+  app/views/books/edit.html.erb:3:in `_app_views_books_edit_html_erb__3686194304163466899_38374340'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.6ms)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:22:42 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors" [0m
+Rendered books/_form.html.erb (54.5ms)
+Rendered books/edit.html.erb within layouts/application (55.1ms)
+Completed 500 Internal Server Error in 61ms
+
+ActionView::Template::Error (undefined method `author_id' for #<Book:0x0000000434c7a0>):
+    20:    
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.association :author %><br />
+    24:    
+    25:   </div>
+    26:   <div class="actions">
+  app/views/books/_form.html.erb:23:in `block in _app_views_books__form_html_erb___1638275562913921203_39301160'
+  app/views/books/_form.html.erb:1:in `_app_views_books__form_html_erb___1638275562913921203_39301160'
+  app/views/books/edit.html.erb:3:in `_app_views_books_edit_html_erb__3686194304163466899_38374340'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:23:11 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors" 
+Rendered books/_form.html.erb (148.4ms)
+Rendered books/edit.html.erb within layouts/application (155.2ms)
+Completed 500 Internal Server Error in 193ms
+
+ActionView::Template::Error (undefined method `author_id' for #<Book:0x000000039b0f20>):
+    20:    
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.association :author %><br />
+    24:    
+    25:   </div>
+    26:   <div class="actions">
+  app/views/books/_form.html.erb:23:in `block in _app_views_books__form_html_erb___4504709316060843407_34813960'
+  app/views/books/_form.html.erb:1:in `_app_views_books__form_html_erb___4504709316060843407_34813960'
+  app/views/books/edit.html.erb:3:in `_app_views_books_edit_html_erb__834322155578758230_38486640'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (26.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (29.6ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20111227193610)
+Migrating to CreateBooks (20111227193756)
+Migrating to CreateUserBooks (20111227194002)
+Migrating to AddDescripcionToBooks (20111227201829)
+Migrating to CreateAuthors (20111227202019)
+Migrating to AddAuthorIdToBooks (20111227202356)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "books" ADD "author_id" integer[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111227202356')
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("authors")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("books")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("user_books")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2011-12-27 21:24:15 +0100
+  Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors" 
+Rendered books/_form.html.erb (145.8ms)
+Rendered books/edit.html.erb within layouts/application (153.8ms)
+Completed 200 OK in 210ms (Views: 206.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /user_books.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /books.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /authors.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /authors.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /books.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /user_books.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:24:16 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started PUT "/books/1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+  Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "book"=>{"title"=>"Las cronicas de narnia", "description"=>"habia un pepito que se fue a narnia.", "author_id"=>"1"}, "commit"=>"Update Book", "id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.3ms)[0m  UPDATE "books" SET "description" = 'habia un pepito que se fue a narnia.', "author_id" = 1, "updated_at" = '2011-12-27 20:26:09.541564' WHERE "books"."id" = 1
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 180ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (35.1ms)
+Completed 200 OK in 46ms (Views: 44.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:09 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /authors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.css?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /user_books.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /authors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/user_books.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /user_books.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-12-27 21:26:51 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:27:31 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (11.6ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.title %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb___448140414758776052_28226840'
+  app/controllers/books_controller.rb:18:in `show'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.3ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:28:36 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb___448140414758776052_29666400'
+  app/controllers/books_controller.rb:18:in `show'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:29:04 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (35.7ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb___448140414758776052_29666400'
+  app/controllers/books_controller.rb:18:in `show'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:31:14 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb___448140414758776052_29666400'
+  app/controllers/books_controller.rb:18:in `show'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started PUT "/books/1" for 127.0.0.1 at 2011-12-27 21:32:11 +0100
+  Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "book"=>{"title"=>"Las cronicas de narnia", "description"=>"habia un pepito que se fue a narnia.", "author_id"=>"1"}, "commit"=>"Update Book", "id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 10ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:32:11 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb___448140414758776052_29666400'
+  app/controllers/books_controller.rb:18:in `show'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.1ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:37:22 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (37.7ms)
+Completed 500 Internal Server Error in 78ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb__896600161062671776_24397880'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
+
+
+Started PUT "/books/1" for 127.0.0.1 at 2011-12-27 21:37:29 +0100
+  Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "book"=>{"title"=>"Las cronicas de narnia", "description"=>"habia un pepito que se fue a narnia.", "author_id"=>"1"}, "commit"=>"Update Book", "id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 13ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:37:29 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb__896600161062671776_24397880'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.0ms)
+
+
+Started PUT "/books/1" for 127.0.0.1 at 2011-12-27 21:46:06 +0100
+  Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thGcbAz3JrK5zyYvKViyxSm2igE1HRPkopZ8MUxNrBk=", "book"=>{"title"=>"Las cronicas de narnia", "description"=>"habia un pepito que se fue a narnia.", "author_id"=>"1"}, "commit"=>"Update Book", "id"=>"1"}
+  [1m[35mBook Load (0.1ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 14ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2011-12-27 21:46:06 +0100
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered books/show.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   <b>Title:</b>
+    5:   <%= @book.title %>
+    6:    <b>Author:</b>
+    7:   <%= @author.name %>
+    8: </p>
+    9: 
+    10: 
+  app/views/books/show.html.erb:7:in `_app_views_books_show_html_erb__896600161062671776_24397880'
+
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/irvin/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (4.2ms)
